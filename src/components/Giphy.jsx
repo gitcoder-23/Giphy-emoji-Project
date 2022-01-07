@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-import Loader from "./Loader";
-import Paginate from "./Paginate";
+import Loader from './Loader';
+import Paginate from './Paginate';
 
 const Giphy = () => {
   const [data, setData] = useState([]);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -26,11 +26,11 @@ const Giphy = () => {
       setIsLoading(true);
 
       try {
-        const results = await axios("https://api.giphy.com/v1/gifs/trending", {
+        const results = await axios('https://api.giphy.com/v1/gifs/trending', {
           params: {
-            api_key: "tAEFUgagRjRNkU24orQdFB8EHMcNTUSe",
-            limit: 100
-          }
+            api_key: 'tAEFUgagRjRNkU24orQdFB8EHMcNTUSe',
+            limit: 100,
+          },
         });
 
         console.log(results);
@@ -50,7 +50,7 @@ const Giphy = () => {
     if (isLoading) {
       return <Loader />;
     }
-    return currentItems.map(el => {
+    return currentItems.map((el) => {
       return (
         <div key={el.id} className="gif">
           <img src={el.images.fixed_height.url} />
@@ -71,22 +71,22 @@ const Giphy = () => {
     }
   };
 
-  const handleSearchChange = event => {
+  const handleSearchChange = (event) => {
     setSearch(event.target.value);
   };
 
-  const handleSubmit = async event => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setIsError(false);
     setIsLoading(true);
 
     try {
-      const results = await axios("https://4api.giphy.com/v1/gifs/search", {
+      const results = await axios('https://4api.giphy.com/v1/gifs/search', {
         params: {
-          api_key: "tAEFUgagRjRNkU24orQdFB8EHMcNTUSe",
+          api_key: 'tAEFUgagRjRNkU24orQdFB8EHMcNTUSe',
           q: search,
-          limit: 100
-        }
+          limit: 100,
+        },
       });
       setData(results.data.data);
     } catch (err) {
@@ -97,7 +97,7 @@ const Giphy = () => {
     setIsLoading(false);
   };
 
-  const pageSelected = pageNumber => {
+  const pageSelected = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
