@@ -1,5 +1,7 @@
 {
   "name": "giphy",
+  "you-tut": "https://youtu.be/vYF_gLh2cz0",
+  "vercel-link": "https://giphy-emoji-project.vercel.app/!#",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
